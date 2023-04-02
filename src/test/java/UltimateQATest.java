@@ -51,4 +51,10 @@ public class UltimateQATest extends PageSetup{
             Assertions.assertEquals(listOfCars.get(i), dropdownOption.getText().toLowerCase());
         }
     }
+    @Test
+    public void testFour(){
+        WebElement blueField = driver.findElement(By.xpath("//*[contains(@class, 'et_pb_module et_pb_cta_0 et_pb_promo')]"));
+        Assertions.assertEquals("rgba(46, 163, 242, 1)", blueField.getCssValue("background-color"));
+    }
+
 }
