@@ -3,6 +3,9 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class UltimateQATest extends PageSetup{
 
 
@@ -30,5 +33,20 @@ public class UltimateQATest extends PageSetup{
         WebElement thanksText =driver.findElement(By.xpath("//div[@class='et-pb-contact-message']/p"));
         Assertions.assertEquals("Thanks for contacting us",thanksText.getText());
     }
+    @Test
+    public void testThree() {
+        List<String> listOfCars = new ArrayList<>();
+        listOfCars.add("Volvo");
+        listOfCars.add("Saab");
+        listOfCars.add("Opel");
+        listOfCars.add("Audi");
 
+        WebElement dropdown = driver.findElement(By.xpath("//div[text()='Select an option and validate that it is selected']"));
+        dropdown.click();
+        WebElement dropdownOption = driver.findElement(By.xpath("//option[@value='saab']"));
+        dropdownOption.click();
+
+        Assertions.assertTrue(dropdownOption.isSelected());
+        Assertions.assertEquals("Saab", dropdownOption.getText());
+    }
 }
