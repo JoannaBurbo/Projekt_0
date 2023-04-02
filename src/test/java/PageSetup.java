@@ -3,7 +3,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class PageSetup {
-    String projectLocation = System.getProperty("user.dir");
+    private String projectLocation = System.getProperty("user.dir");
     ChromeDriver driver;
 
     @BeforeEach
@@ -17,6 +17,6 @@ public class PageSetup {
 
     @AfterEach
     public void teardown() {
-//        driver.quit();
+        driver.quit();
     }
 }

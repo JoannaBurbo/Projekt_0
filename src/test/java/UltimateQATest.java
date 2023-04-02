@@ -36,17 +36,19 @@ public class UltimateQATest extends PageSetup{
     @Test
     public void testThree() {
         List<String> listOfCars = new ArrayList<>();
-        listOfCars.add("Volvo");
-        listOfCars.add("Saab");
-        listOfCars.add("Opel");
-        listOfCars.add("Audi");
+        listOfCars.add("volvo");
+        listOfCars.add("saab");
+        listOfCars.add("opel");
+        listOfCars.add("audi");
 
         WebElement dropdown = driver.findElement(By.xpath("//div[text()='Select an option and validate that it is selected']"));
-        dropdown.click();
-        WebElement dropdownOption = driver.findElement(By.xpath("//option[@value='saab']"));
-        dropdownOption.click();
 
-        Assertions.assertTrue(dropdownOption.isSelected());
-        Assertions.assertEquals("Saab", dropdownOption.getText());
+        for (int i = 0; i < listOfCars.size(); i++) {
+            dropdown.click();
+            WebElement dropdownOption = driver.findElement(By.xpath("//option[@value='" + listOfCars.get(i) + "']"));
+            dropdownOption.click();
+            Assertions.assertTrue(dropdownOption.isSelected());
+            Assertions.assertEquals(listOfCars.get(i), dropdownOption.getText().toLowerCase());
+        }
     }
 }
